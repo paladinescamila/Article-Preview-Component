@@ -8,6 +8,11 @@ const setShareExpanded = (isExpanded) => {
 	shareTooltip.classList.toggle('share-tooltip--active', isExpanded);
 };
 
+const setShareVisible = (isVisible) => {
+	shareTooltip.setAttribute('aria-hidden', String(!isVisible));
+	shareTooltip.classList.toggle('share-tooltip--active', isVisible);
+};
+
 const toggleShareTooltip = () => {
 	const isExpanded = shareButton.getAttribute('aria-expanded') === 'true';
 	setShareExpanded(!isExpanded);
@@ -16,17 +21,17 @@ const toggleShareTooltip = () => {
 shareButton.addEventListener('click', toggleShareTooltip);
 
 share.addEventListener('pointerenter', () => {
-	shareTooltip.setAttribute('aria-hidden', 'false');
+	setShareVisible(true);
 });
 
 share.addEventListener('pointerleave', () => {
 	if (shareButton.getAttribute('aria-expanded') !== 'true') {
-		shareTooltip.setAttribute('aria-hidden', 'true');
+		setShareVisible(false);
 	}
 });
 
 share.addEventListener('focusin', () => {
-	shareTooltip.setAttribute('aria-hidden', 'false');
+	setShareVisible(true);
 });
 
 share.addEventListener('focusout', (event) => {
@@ -34,7 +39,7 @@ share.addEventListener('focusout', (event) => {
 		!share.contains(event.relatedTarget) &&
 		shareButton.getAttribute('aria-expanded') !== 'true'
 	) {
-		shareTooltip.setAttribute('aria-hidden', 'true');
+		setShareVisible(false);
 	}
 });
 
