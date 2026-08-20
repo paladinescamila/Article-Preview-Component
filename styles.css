@@ -144,7 +144,7 @@ body {
 	border-radius: 50px;
 	background-color: var(--grey-200);
 	border: none;
-	outline: none;
+	outline: 1px solid var(--grey-200);
 	cursor: pointer;
 	display: flex;
 	align-items: center;
