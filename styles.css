@@ -20,8 +20,8 @@
 }
 
 body {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	min-height: 100dvh;
 }
 
 /* TEXT */
@@ -83,7 +83,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding: 24px;
-	box-sizing: border-box;
 }
 
 .card {
@@ -195,7 +194,8 @@ body {
 }
 
 .share:hover .share-tooltip,
-.share:focus-within .share-tooltip {
+.share:focus-within .share-tooltip,
+.share-tooltip--active {
 	opacity: 1;
 	visibility: visible;
 	transform: translate(-50%, 0);
