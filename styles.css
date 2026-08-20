@@ -153,7 +153,7 @@ body {
 }
 
 .share__button:focus {
-	outline: 1px solid var(--grey-200);
+	outline: 1px solid var(--grey-400);
 }
 
 .share__image {
