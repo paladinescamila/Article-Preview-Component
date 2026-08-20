@@ -139,6 +139,7 @@ body {
 }
 
 .share__button {
+	position: relative;
 	width: 32px;
 	height: 32px;
 	border-radius: 50px;
@@ -149,6 +150,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 2;
 }
 
 .share__image {
@@ -158,6 +160,7 @@ body {
 
 .share-tooltip {
 	position: absolute;
+	z-index: 1;
 	bottom: calc(100% + 18px);
 	left: 50%;
 	transform: translate(-50%, 5px);
@@ -280,6 +283,16 @@ body {
 
 	.share {
 		position: static;
+	}
+
+	.share:hover .share__image,
+	.share:focus-within .share__image {
+		filter: brightness(0) invert(1);
+	}
+
+	.share:hover .share__button,
+	.share:focus-within .share__button {
+		background-color: var(--grey-500);
 	}
 
 	.share-tooltip {
