@@ -230,7 +230,7 @@ body {
 }
 
 .social a:focus {
-	outline: 1px solid var(--grey-400);
+	outline: 1px solid var(--grey-500);
 }
 
 .social a:hover,
@@ -264,7 +264,8 @@ body {
 	}
 
 	.share:hover .share-tooltip,
-	.share:focus-within .share-tooltip {
+	.share:focus-within .share-tooltip,
+	.share-tooltip--active {
 		transform: translate(0, 0);
 	}
 }
@@ -309,14 +310,22 @@ body {
 		position: static;
 	}
 
-	.share:hover .share__image,
-	.share:focus-within .share__image {
+	.share:hover .share__button .share__image,
+	.share__button:hover .share__image,
+	.share__button:focus .share__image,
+	.share__button[aria-expanded='true'] .share__image {
 		filter: brightness(0) invert(1);
 	}
 
 	.share:hover .share__button,
-	.share:focus-within .share__button {
+	.share__button:hover,
+	.share__button:focus,
+	.share__button[aria-expanded='true'] {
 		background-color: var(--grey-500);
+	}
+
+	.share__button:focus {
+		outline: 1px solid var(--grey-500);
 	}
 
 	.share-tooltip {

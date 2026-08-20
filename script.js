@@ -1,17 +1,28 @@
 const shareButton = document.getElementById('share-button');
+const shareTooltip = document.getElementById('share-tooltip');
 
-// Click on the share button
+// When the share button is clicked
+const setShareExpanded = (isExpanded) => {
+	shareButton.setAttribute('aria-expanded', String(isExpanded));
+	shareTooltip.setAttribute('aria-hidden', String(!isExpanded));
+	shareTooltip.classList.toggle('share-tooltip--active', isExpanded);
+};
+
 shareButton.addEventListener('click', () => {
-	const shareTooltip = document.getElementById('share-tooltip');
-	shareTooltip.classList.toggle('share-tooltip--active');
-	shareTooltip.classList.toggle('share-tooltip--hidden');
+	const isExpanded = shareButton.getAttribute('aria-expanded') === 'true';
+	setShareExpanded(!isExpanded);
 });
 
-// Click outside the share button
+// When a click is detected outside the share button or tooltip
 document.addEventListener('click', (event) => {
-	const shareTooltip = document.getElementById('share-tooltip');
 	if (!shareTooltip.contains(event.target) && !shareButton.contains(event.target)) {
-		shareTooltip.classList.remove('share-tooltip--active');
-		shareTooltip.classList.add('share-tooltip--hidden');
+		setShareExpanded(false);
+	}
+});
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape') {
+		setShareExpanded(false);
+		shareButton.focus();
 	}
 });
